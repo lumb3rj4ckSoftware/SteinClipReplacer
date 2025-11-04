@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Stein Clip Replacer</title>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: filesystem:;">
+  <style>
+    html, body { height: 100%; margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+    .wrap { padding: 16px; display: grid; gap: 12px; }
+    .card { border: 1px solid #ddd; border-radius: 12px; padding: 14px; }
+    label { font-weight: 600; }
+    input[type="text"] { width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 8px; }
+    button { padding: 10px 12px; border: 0; border-radius: 10px; cursor: pointer; }
+    .primary { background: #3b82f6; color: #fff; font-weight: 700; }
+    .muted { background: #f3f4f6; }
+    .row { display: flex; gap: 8px; align-items: center; }
+    .hint { color: #666; font-size: 12px; }
+    .ok { color: #0a7a0a; }
+    .err { color: #b00020; white-space: pre-wrap; }
+    .sep { height: 1px; background: #eee; margin: 6px 0; }
+    small code { background: #f6f8fa; padding: 0 4px; border-radius: 4px; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <div><b>Ziel</b></div>
+      <div class="hint">Ersetzt den Clip auf <b>V1</b> und <b>V2</b> unter dem Playhead oder anhand Selektion.
+        <br>V3–V5 (und Audiospuren) bleiben unberührt.</div>
+    </div>
+
+    <div class="card">
+      <label>Neuer Clip (Dateipfad)</label>
+      <div class="row">
+        <input id="newPath" type="text" placeholder="C:\Pfad\zu\neuerDatei.mp4">
+        <button id="browse" class="muted">Datei wählen…</button>
+      </div>
+      <div class="hint">Falls noch nicht im Projekt, wird die Datei importiert.</div>
+      <div class="sep"></div>
+      <div class="row">
+        <input id="useSelection" type="checkbox" checked>
+        <label for="useSelection">Selektierte Clips auf V1/V2 bevorzugen (sonst Clip unter Playhead)</label>
+      </div>
+      <div class="sep"></div>
+      <div class="row">
+        <button id="run" class="primary">Clip auf V1 & V2 ersetzen</button>
+        <button id="ping" class="muted">Status prüfen</button>
+      </div>
+      <div id="status" class="hint"></div>
+      <div id="error" class="err"></div>
+    </div>
+
+    <div class="card">
+      <b>Hinweise</b>
+      <ul>
+        <li>V1 & V2: Video wird ersetzt. Auf V2 wird verlinktes Audio entfernt.</li>
+        <li>A1: Audio wird mit neuem Clip ersetzt und auf Medienlänge gesetzt.</li>
+        <li>Ripple nur auf V1, V2 und A1. V3–V5 bleiben unverändert.</li>
+      </ul>
+      <small>Wenn du nur <i>eine</i> Spur ersetzen willst, markiere einfach nur den gewünschten Clip und entferne die Selektion auf der anderen Spur.</small>
+    </div>
+  </div>
+
+  <script src="js/CSInterface.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

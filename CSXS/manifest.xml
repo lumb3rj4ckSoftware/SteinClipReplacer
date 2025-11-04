@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ExtensionManifest Version="10.0" ExtensionBundleId="com.steinhq.clipreplacer.bundle" ExtensionBundleVersion="1.0.0" ExtensionBundleName="Stein Clip Replacer" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <ExtensionList>
+    <Extension Id="com.steinhq.clipreplacer.panel" Version="1.0.0"/>
+  </ExtensionList>
+
+  <ExecutionEnvironment>
+    <HostList>
+      <!-- Premiere Pro 2022 (v22.x) HostCode: PPRO -->
+      <Host Name="PPRO" Version="[22.0, 22.9]"/>
+    </HostList>
+    <LocaleList>
+      <Locale>All</Locale>
+    </LocaleList>
+    <RequiredRuntimeList>
+      <!-- CEP 11 läuft mit PPro 2022; 10 ist ebenfalls ok -->
+      <RequiredRuntime Name="CSXS" Version="10.0"/>
+    </RequiredRuntimeList>
+  </ExecutionEnvironment>
+
+  <DispatchInfoList>
+    <Extension Id="com.steinhq.clipreplacer.panel">
+      <DispatchInfo>
+        <Resources>
+          <MainPath>index.html</MainPath>
+          <ScriptPath>js/main.js</ScriptPath>
+          <CEFCommandLine/>
+        </Resources>
+        <Lifecycle>
+          <AutoVisible>true</AutoVisible>
+        </Lifecycle>
+        <UI>
+          <Type>Panel</Type>
+          <Menu>Stein Clip Replacer</Menu>
+          <Geometry>
+            <Size>
+              <Height>420</Height>
+              <Width>420</Width>
+            </Size>
+            <MinSize>
+              <Height>320</Height>
+              <Width>360</Width>
+            </MinSize>
+            <MaxSize>
+              <Height>2000</Height>
+              <Width>2000</Width>
+            </MaxSize>
+          </Geometry>
+          <Icons/>
+        </UI>
+      </DispatchInfo>
+    </Extension>
+  </DispatchInfoList>
+
+  <SpecialExtension>
+    <Parameter Name="PlayerDebugMode" Value="true"/>
+  </SpecialExtension>
+
+  <Dependencies/>
+</ExtensionManifest>
